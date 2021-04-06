@@ -1,0 +1,48 @@
+@ROOT_URL = http://localhost:3000
+@sid=s%3AxbqxP93D05ISmbeAqh8547KNL8AuX5np.NfGi%2Fycq0v5WEslWJ%2BoprUmy8LZ6bYsJHKG4wYYFGy8
+GET {{ROOT_URL}}/home
+###
+
+// Success
+POST {{ROOT_URL}}/login HTTP/1.1
+content-type: application/json
+sid: {{sid}}
+
+{
+    "email": "roman.munar1@gmail.com",
+    "password": "superS3cret"
+}
+
+###
+// Logout
+POST {{ROOT_URL}}/logout HTTP/1.1
+content-type: application/json
+sid: {{sid}}
+
+{
+    "email": "roman.munar1@gmail.com",
+    "password": "superS3cret"
+}
+
+
+###
+// Fails email validation
+POST {{ROOT_URL}}/login HTTP/1.1
+content-type: application/json
+sid: {{sid}}
+
+{
+    "email": "roman.munar1gmail.com",
+    "password": "superS3cret"
+}
+
+###
+// Fails password validation
+POST {{ROOT_URL}}/login HTTP/1.1
+content-type: application/json
+sid: {{sid}}
+
+{
+    "email": "roman.munar1@gmail.com",
+    "password": "supersecret"
+}

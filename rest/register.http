@@ -1,0 +1,59 @@
+@ROOT_URL = http://localhost:3000
+
+GET {{ROOT_URL}}/home
+###
+
+// Success
+POST {{ROOT_URL}}/register HTTP/1.1
+content-type: application/json
+
+{
+    "name":"Roman Munar",
+    "email": "roman.munar1@gmail.com",
+    "password": "superS3cret",
+    "passwordConfirmation": "superS3cret"
+}
+###
+// Fails email validation
+POST {{ROOT_URL}}/register HTTP/1.1
+content-type: application/json
+
+{
+    "name":"Roman Munar",
+    "email": "roman.munar1gmail.com",
+    "password": "superS3cret",
+    "passwordConfirmation": "superS3cret"
+}
+
+###
+// Fails password validation
+POST {{ROOT_URL}}/register HTTP/1.1
+content-type: application/json
+
+{
+    "name":"Roman Munar",
+    "email": "roman.munar1@gmail.com",
+    "password": "supersecret",
+    "passwordConfirmation": "supersecret"
+}
+###
+// Fails name is required
+POST {{ROOT_URL}}/register HTTP/1.1
+content-type: application/json
+
+{
+    "email": "roman.munar1gmail.com",
+    "password": "superS3cret",
+    "passwordConfirmation": "superS3cret"
+}
+
+###
+// Fails password confirmation is required
+POST {{ROOT_URL}}/register HTTP/1.1
+content-type: application/json
+
+{
+    "name":"Roman Munar",
+    "email": "roman.munar1gmail.com",
+    "password": "superS3cret",
+}
