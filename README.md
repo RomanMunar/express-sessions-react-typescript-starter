@@ -6,8 +6,8 @@
 
 - [x] CRUD to mongodb
 - [x] Auth Session with redis
-- [ ] Middleware System
-- [ ] Error Handling
+- [x] Middleware System
+- [x] Error Handling
 - [ ] File Upload
 - [ ] Email
 - [ ] Containerize with Docker & docker-compose
