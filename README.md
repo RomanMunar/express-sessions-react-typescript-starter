@@ -4,15 +4,15 @@
 
 ## Roadmap
 
-- [ ] CRUD to mongodb
-- [ ] Auth Session with redis
+- [x] CRUD to mongodb
+- [x] Auth Session with redis
+- [ ] Middleware System
 - [ ] Error Handling
 - [ ] File Upload
 - [ ] Email
-- [ ] Containerized with Docker & docker-compose
+- [ ] Containerize with Docker & docker-compose
 - [ ] Logger
-- [ ] Shutdown Action
-- [ ] Middleware System
+- [ ] Shutdown System
 - [ ] Database Seed with Faker
 - [ ] E2E tests
 
