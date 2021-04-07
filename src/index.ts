@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import session from 'express-session'
 import connectRedis from 'connect-redis'
 import Redis from 'ioredis'
-import { MONGO_URI, MONGO_OPTIONS, APP_PORT } from './config'
+import { MONGO_URI, MONGO_OPTIONS, APP_PORT, REDIS_OPTIONS } from './config'
 import { createApp } from './app'
 
 const main = async () => {
@@ -10,8 +10,7 @@ const main = async () => {
 
   const RedisStore = connectRedis(session)
 
-  // const client = new Redis(REDIS_OPTIONS) from config/cache
-  const client = new Redis()
+  const client = new Redis(REDIS_OPTIONS)
 
   const store = new RedisStore({ client })
 

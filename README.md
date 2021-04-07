@@ -15,6 +15,8 @@
 - [ ] Shutdown System
 - [ ] Database Seed with Faker
 - [ ] E2E tests
+- [ ] Separate root from backend
+- [ ] ROOT: Husky lint-staged, eslint, and prettier setup
 
 ---
 
