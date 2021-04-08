@@ -2,15 +2,11 @@ import { Request, Response } from 'express'
 import { SESSION_NAME } from './config'
 import { UserDocument } from './models'
 
-export const isLoggedIn = (req: Request) => !!req.session!.userId
-
-export const logIn = (req: Request, userId: string) => {
-  req.session!.userId = userId
-  req.session!.createdAt = Date.now()
-}
+export const isLoggedIn = (req: Request) => req.isAuthenticated()
 
 export const logOut = (req: Request, res: Response) =>
   new Promise<void>((resolve, reject) => {
+    req.logout()
     req.session!.destroy((err: Error) => {
       if (err) reject(err)
 
