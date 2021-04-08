@@ -1,0 +1,69 @@
+body {
+  display: grid;
+  place-items: center;
+  background: #1d1028;
+  color: #88ddcc;
+}
+
+/* .upload-box {
+  border: 3px dashed #585858;
+  width: 200px;
+  height: 200px;
+  border-radius: 30px;
+} */
+
+a.auth-btn {
+  padding: 5px 10px;
+  background: #df4a32;
+  color: #fff;
+  border-radius: 5px;
+}
+
+h1 {
+  color: #cec19f;
+}
+
+.container {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.divider {
+  border: 2px solid #fff;
+  height: 35vh;
+}
+
+.auth {
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+  border: 3px solid #e22e0e;
+  background: #20213b;
+}
+
+.github.auth-btn {
+  padding: 5px 10px;
+  background: #24292e;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.upload {
+  display: flex;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+  border: 3px solid #e22e0e;
+  background: #20213b;
+}
+
+#upload-input {
+  width: 200px;
+  height: 200px;
+}
+
+.upload.upload-done {
+  border-color: #44ff44;
+}

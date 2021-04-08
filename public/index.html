@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="normalize.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div style="display: flex; flex-direction: column">
+        <div class="auth">
+          <h1>Sign In to github</h1>
+          <p>This is a homepage.</p>
+          <a class="github auth-btn" href="/auth/github">Log In With Github</a>
+        </div>
+        <div class="auth">
+          <h1>Sign In to google</h1>
+          <p>This is a homepage.</p>
+          <a class="auth-btn" href="/auth/google">Log In With Google</a>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="upload">
+        <div>
+          <h1>Upload an image</h1>
+          <input type="file" name="image" accept="image/png, image/jpeg" />
+        </div>
+        <img src="" id="upload-input" />
+      </div>
+    </div>
+  </body>
+  <script>
+    const uploadInput = document.querySelector('#upload-input')
+    const uploadContainer = document.querySelector('.upload')
+
+    const uploadFileHandler = async e => {
+      const file = e.target.files[0]
+      const formData = new FormData()
+      formData.append('image', file)
+
+      try {
+        const config = {
+          method: 'POST',
+          body: formData,
+        }
+
+        const data = await fetch('/upload', config).then(res => res.json())
+        setUploadInput(data.path)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    const setUploadInput = path => {
+      uploadInput.setAttribute('src', path)
+      uploadContainer.classList += ' upload-done'
+    }
+
+    const input = document.querySelector('input')
+    input.addEventListener('change', uploadFileHandler)
+  </script>
+</html>
