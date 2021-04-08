@@ -8,15 +8,17 @@
 - [x] Auth Session with redis
 - [x] Middleware System
 - [x] Error Handling
-- [ ] File Upload
+- [x] File Upload
+- [ ] OAuth Github & Google
 - [ ] Email
-- [ ] Containerize with Docker & docker-compose
+- [x] Containerize with Docker & docker-compose
 - [ ] Logger
 - [ ] Shutdown System
 - [ ] Database Seed with Faker
 - [ ] E2E tests
-- [ ] Separate root from backend
+- [ ] Separate ROOT from backend
 - [ ] ROOT: Husky lint-staged, eslint, and prettier setup
+- [ ] Rate limit
 
 ---
 
