@@ -8,7 +8,7 @@ router.post(
   '/upload',
   uploadFile.single('image'),
   catchAsync(async (req, res) => {
-    res.json({ path: `/${req.file.path.split(STATIC_DIR)[1]}`, message: 'OK' })
+    res.json({ path: `/${req.file.path.split(STATIC_DIR + '/')[1]}`, message: 'OK' })
   })
 )
 

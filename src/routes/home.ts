@@ -7,10 +7,9 @@ const router = Router()
 router.get(
   '/isAuth',
   catchAsync(async (req, res) => {
-    console.log(req.user)
-    console.log(req.isAuthenticated())
     // const user = await User.findById(req.user)
-    res.send(req.user)
+    const message = req.isAuthenticated() ? 'OK' : "You're not signed in"
+    res.json({ message })
   })
 )
 
