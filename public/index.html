@@ -7,13 +7,11 @@
     <div class="container">
       <div style="display: flex; flex-direction: column">
         <div class="auth">
-          <h1>Sign In to github</h1>
-          <p>This is a homepage.</p>
+          <h1>Sign In using Github</h1>
           <a class="github auth-btn" href="/auth/github">Log In With Github</a>
         </div>
         <div class="auth">
-          <h1>Sign In to google</h1>
-          <p>This is a homepage.</p>
+          <h1>Sign In using Google</h1>
           <a class="auth-btn" href="/auth/google">Log In With Google</a>
         </div>
       </div>
@@ -54,7 +52,7 @@
       uploadContainer.classList += ' upload-done'
     }
 
-    const input = document.querySelector('input')
+    const input = document.querySelector('input[type="file"]')
     input.addEventListener('change', uploadFileHandler)
   </script>
 </html>
