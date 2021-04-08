@@ -39,7 +39,9 @@
     "@types/multer": "^1.4.5",
     "@types/node": "^14.14.37",
     "@types/nodemailer": "^6.4.1",
+    "@types/passport-github2": "^1.2.4",
     "@types/passport-google-oauth": "^1.0.41",
+    "@types/passport-local": "^1.0.33",
     "bcryptjs": "^2.4.3",
     "chalk": "^4.1.0",
     "compression": "^1.7.4",
@@ -59,7 +61,9 @@
     "nodemailer": "^6.5.0",
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",
+    "passport-github2": "^0.1.12",
     "passport-google-oauth": "^2.0.0",
+    "passport-local": "^1.0.0",
     "typescript": "^4.2.3",
     "zod": "^1.11.13"
   }

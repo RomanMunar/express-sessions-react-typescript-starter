@@ -23,7 +23,7 @@ export const SESSION_OPTIONS: SessionOptions = {
   cookie: {
     maxAge: +SESSION_IDLE_TIMEOUT,
     secure: IN_PROD,
-    sameSite: true,
+    sameSite: 'lax', // Oauth
   },
   rolling: true,
   resave: false,
