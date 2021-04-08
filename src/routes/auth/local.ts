@@ -7,6 +7,7 @@ import { BadRequest } from '../../errors'
 import { auth, catchAsync, guest } from '../../middleware'
 import { loginSchema, registerSchema, validate } from '../../validation'
 import { logOut } from '../../auth'
+import { sendMail } from '../../mail'
 /* 
 Flow:
   {email,password} = Req.obdy
@@ -54,11 +55,12 @@ const verify: (
 
       const link = newUser.verificationUrl()
 
-      // await sendMail({
-      //   to: email,
-      //   subject: 'Verify your email address',
-      //   text: link,
-      // })
+      console.log({link})
+      await sendMail({
+        to: email,
+        subject: 'Verify your email address',
+        text: link,
+      })
 
       done(null, newUser.id)
     }
@@ -85,8 +87,8 @@ export const createLocalPassport = (app: Express) => {
     passport.authenticate('local', {
       passReqToCallback: true,
     }),
-    function (req, res) {
-      res.redirect('/home')
+    function (_, res) {
+      res.json({ message: 'OK' })
     }
   )
 
