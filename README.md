@@ -9,16 +9,17 @@
 - [x] Middleware System
 - [x] Error Handling
 - [x] File Upload
-- [ ] OAuth Github & Google
+- [x] OAuth Github & Google
 - [ ] Email
+- [ ] Reset Password
 - [x] Containerize with Docker & docker-compose
+- [ ] Rate limit
 - [ ] Logger
-- [ ] Shutdown System
 - [ ] Database Seed with Faker
 - [ ] E2E tests
 - [ ] Separate ROOT from backend
 - [ ] ROOT: Husky lint-staged, eslint, and prettier setup
-- [ ] Rate limit
+- [ ] Front end/example to show how to use endpoints
 
 ---
 
