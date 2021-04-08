@@ -8,11 +8,23 @@ import {
   APP_ORIGIN,
 } from '../config'
 
+export interface IUser {
+  _id: string
+  email: string
+  name: string
+  password: string
+  authMethod: 'oauth' | 'local'
+  verifiedAt?: Date
+  avatar?: string
+}
+
 export interface UserDocument extends Document {
   email: string
   name: string
   password: string
-  verifiedAt: Date
+  authMethod: 'oauth' | 'local'
+  verifiedAt?: Date
+  avatar?: string
   matchesPassword: (password: string) => Promise<boolean>
   verificationUrl: () => string
 }
@@ -28,6 +40,8 @@ const userSchema = new Schema<UserDocument>(
     name: String,
     password: String,
     verifiedAt: Date,
+    authMethod: String,
+    avatar: { type: String, required: false },
   },
   {
     timestamps: true,
