@@ -12,8 +12,8 @@ export interface IUser {
   _id: string
   email: string
   name: string
-  password: string
   authMethod: 'oauth' | 'local'
+  password?: string
   verifiedAt?: Date
   avatar?: string
 }
@@ -21,8 +21,8 @@ export interface IUser {
 export interface UserDocument extends Document {
   email: string
   name: string
-  password: string
   authMethod: 'oauth' | 'local'
+  password?: string
   verifiedAt?: Date
   avatar?: string
   matchesPassword: (password: string) => Promise<boolean>
@@ -38,9 +38,9 @@ const userSchema = new Schema<UserDocument>(
   {
     email: String,
     name: String,
-    password: String,
-    verifiedAt: Date,
     authMethod: String,
+    verifiedAt: { type: Date, required: false },
+    password: { type: String, required: false },
     avatar: { type: String, required: false },
   },
   {
@@ -50,12 +50,12 @@ const userSchema = new Schema<UserDocument>(
 
 userSchema.pre<UserDocument>('save', async function () {
   if (this.isModified('password')) {
-    this.password = await hash(this.password, BCRYPT_WORK_FACTOR)
+    if (this.password) this.password = await hash(this.password, BCRYPT_WORK_FACTOR)
   }
 })
 
 userSchema.methods.matchesPassword = function (password: string) {
-  return compare(password, this.password)
+  return this.password ? compare(password, this.password) : true
 }
 
 userSchema.methods.verificationUrl = function () {
