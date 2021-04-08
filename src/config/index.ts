@@ -11,3 +11,5 @@ export * from './session'
 export * from './upload'
 
 export * from './passport'
+
+export * from './mail'
