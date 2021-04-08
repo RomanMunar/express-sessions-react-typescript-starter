@@ -43,19 +43,24 @@ export type LocalVerifyFunction = (
 ) => void
 
 export type VerifyFunction = (
+  _: Request, // req
+  __: string, // access_token
+  ___: string, // refresh_token
   profile: any,
   done: (error: any, user?: any, msg?: { message?: string }) => void
 ) => void
 
 const defaultVerifyFunction = async (
+  _: Request,
+  __: string,
+  ___: string,
   profile: any,
   done: (error: any, user?: any) => void
 ) => {
-  const { email, name, password, avatar } = {
+  const { email, name, avatar } = {
     name: profile.displayName || '',
     avatar: profile.photos[0].value,
     email: profile.email || profile.emails[0].value,
-    password: 'asd',
   }
   try {
     let user = await User.findOne({ email })
@@ -65,8 +70,8 @@ const defaultVerifyFunction = async (
         email,
         name,
         avatar,
-        password,
         authMethod: 'oauth',
+        verifiedAt: new Date(), // oauth accounts don't need to be verified
       })
     }
 
