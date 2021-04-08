@@ -1,3 +1,5 @@
+import path from 'path'
+
 export const {
   NODE_ENV = 'development',
 
@@ -9,5 +11,8 @@ export const {
 } = process.env
 
 export const APP_ORIGIN = `${APP_PROTOCOL}://${APP_HOSTNAME}:${APP_PORT}`
+
+const dirname = path.resolve()
+export const STATIC_DIR = path.join(dirname, '/public')
 
 export const IN_PROD = NODE_ENV === 'production'
