@@ -4,8 +4,59 @@
     <link rel="stylesheet" href="normalize.css" />
   </head>
   <body>
+    <div class="error"></div>
     <div class="container">
+      <pre></pre>
+      <button id="signOut" class="signoutBtn">Sign Out</button>
+      <div class="auth">
+        <h1>Sign In</h1>
+        <div id="form">
+          <label for="email"
+            ><span>Email</span
+            ><input type="text" name="email" id="email" placeholder="Your Email"
+          /></label>
+          <label for="name"
+            ><span>Name</span
+            ><input type="text" name="name" id="name" placeholder="Your Name"
+          /></label>
+          <label for="password">
+            <span>Password</span>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Your Password"
+          /></label>
+          <label for="password">
+            <span>Confirm Password</span>
+            <input
+              type="password"
+              name="confirm password"
+              id="passwordConfirmation"
+              placeholder="Your Password"
+          /></label>
+          <button type="submit" class="auth-btn">Log In</button>
+        </div>
+      </div>
       <div style="display: flex; flex-direction: column">
+        <div class="auth">
+          <h1>Log In</h1>
+          <div id="loginForm">
+            <label for="email"
+              ><span>Email</span
+              ><input type="text" name="email" id="loginEmail" placeholder="Your Email"
+            /></label>
+            <label for="password">
+              <span>Password</span>
+              <input
+                type="password"
+                name="password"
+                id="loginPassword"
+                placeholder="Your Password"
+            /></label>
+            <button type="submit" class="loginAuth-btn">Log In</button>
+          </div>
+        </div>
         <div class="auth">
           <h1>Sign In using Github</h1>
           <a class="github auth-btn" href="/auth/github">Log In With Github</a>
@@ -17,17 +68,49 @@
       </div>
       <div class="divider"></div>
       <div class="upload">
+        <img src="" id="upload-input" />
         <div>
           <h1>Upload an image</h1>
           <input type="file" name="image" accept="image/png, image/jpeg" />
         </div>
-        <img src="" id="upload-input" />
       </div>
     </div>
   </body>
   <script>
     const uploadInput = document.querySelector('#upload-input')
     const uploadContainer = document.querySelector('.upload')
+    const form = document.querySelector('#form')
+    const signOutBtn = document.querySelector('.signoutBtn')
+    const auths = Array.from(document.querySelectorAll('div.auth'))
+    const error = document.querySelector('.error')
+    const loginSubmit = document.querySelector('.loginAuth-btn')
+    const jsonDisplay = document.querySelector('pre')
+
+    const onLoginSubmit = async () => {
+      const body = {
+        email: document.querySelector('#loginEmail').value,
+        password: document.querySelector('#loginPassword').value,
+      }
+      const config = {
+        body: JSON.stringify(body),
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      }
+      const data = await fetch('/auth/signin', config).then(res => res.json())
+      if (data.message.split(' ').includes('logged')) {
+        error.textContent = 'You are already logged in'
+      } else if (data.message.split(' ').includes('validate')) {
+        error.textContent =
+          'password should have one uppercase, one digit, and 8 char long'
+      } else {
+        const res = await fetch('/home')
+        if (res.ok) {
+          jsonDisplay.innerHTML = JSON.stringify(await res.json(), null, 2)
+          onSignIn()
+        }
+      }
+    }
+    loginSubmit.addEventListener('click', onLoginSubmit)
 
     const uploadFileHandler = async e => {
       const file = e.target.files[0]
@@ -52,7 +135,59 @@
       uploadContainer.classList += ' upload-done'
     }
 
+    const onFormSubmit = async e => {
+      const body = {
+        email: document.querySelector('input#email').value,
+        name: document.querySelector('input#name').value,
+        passwordConfirmation: document.querySelector('input#passwordConfirmation').value,
+        password: document.querySelector('input#password').value,
+      }
+      const config = {
+        body: JSON.stringify(body),
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      }
+      const data = await fetch('/auth/signin', config).then(res => res.json())
+      if (data.message !== 'OK') {
+        error.textContent = 'You are already logged in'
+      } else {
+        const res = await fetch('/home')
+        if (res.ok) {
+          jsonDisplay.innerHTML = JSON.stringify(await res.json(), null, 2)
+          onSignIn()
+        }
+      }
+    }
+
+    const onSignIn = () => {
+      auths.map(el => (el.style.display = 'none'))
+      signOutBtn.style.display = 'block'
+      error.textContent =
+        'Check your email for verification\n It will show on the json data to the left'
+    }
+
+    const onSignOut = async e => {
+      e.preventDefault()
+      const data = await fetch('/auth/signout').then(res => res.json())
+      if (data.message == 'OK') {
+        auths.map(el => (el.style.display = 'block'))
+        signOutBtn.style.display = 'none'
+        jsonDisplay.style.display = 'none'
+      }
+    }
+    const signoutBTN = document.querySelector('#signOut')
+    signoutBTN.addEventListener('click', onSignOut)
+
     const input = document.querySelector('input[type="file"]')
     input.addEventListener('change', uploadFileHandler)
+    const submitBtn = document.querySelector('button[type="submit"]')
+    submitBtn.addEventListener('click', onFormSubmit)
+    window.addEventListener('load', async function (e) {
+      const res = await fetch('/home')
+      if (res.ok) {
+        jsonDisplay.innerHTML = JSON.stringify(await res.json(), null, 2)
+        onSignIn()
+      }
+    })
   </script>
 </html>

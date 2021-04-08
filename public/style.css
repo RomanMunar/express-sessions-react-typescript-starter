@@ -12,7 +12,25 @@ body {
   border-radius: 30px;
 } */
 
-form {
+.error {
+  color: #ff3333;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  margin: 40px;
+}
+
+.signoutBtn {
+  color: #4c164d;
+  background: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: none;
+}
+
+#form {
   display: flex;
   flex-direction: column;
 }
@@ -35,9 +53,9 @@ label > span {
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 5px 10px;
+  border-radius: 5px;
   background: #df4a32;
   color: #fff;
-  border-radius: 5px;
 }
 
 h1 {
@@ -72,7 +90,6 @@ h1 {
 }
 
 .upload {
-  display: flex;
   padding: 20px;
   margin: 20px;
   border-radius: 20px;
