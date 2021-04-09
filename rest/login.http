@@ -1,33 +1,45 @@
 @ROOT_URL = http://localhost:3000
-@sid=s%3AxbqxP93D05ISmbeAqh8547KNL8AuX5np.NfGi%2Fycq0v5WEslWJ%2BoprUmy8LZ6bYsJHKG4wYYFGy8
+@sid=s%3AHWHIYa2xPMO5SC6wEdFHMgMbpZV4w_Ny.otuLokfFchzhcIljRPTgQTU8%2B5fGKjb%2B0DNMZit%2By5Q
 GET {{ROOT_URL}}/home
 ###
-
-// Success
-POST {{ROOT_URL}}/login HTTP/1.1
+GET {{ROOT_URL}}/isAuth
+###
+// Register Success
+POST {{ROOT_URL}}/auth/signin HTTP/1.1
 content-type: application/json
-sid: {{sid}}
 
 {
+    "name": "Roman Munar",
     "email": "roman.munar1@gmail.com",
+    "password": "superS3cret",
+    "passwordConfirmation": "superS3cret"
+}
+
+###
+// Login Success
+POST {{ROOT_URL}}/auth/signin HTTP/1.1
+content-type: application/json
+
+{
+    "email": "roman.muaanaar1@gmail.com",
     "password": "superS3cret"
 }
 
 ###
-// Logout
-POST {{ROOT_URL}}/logout HTTP/1.1
+// Logout Success
+POST {{ROOT_URL}}/auth/logout HTTP/1.1
 content-type: application/json
 sid: {{sid}}
 
 {
-    "email": "roman.munar1@gmail.com",
+    "email": "roman.muaanar1@gmail.com",
     "password": "superS3cret"
 }
 
 
 ###
 // Fails email validation
-POST {{ROOT_URL}}/login HTTP/1.1
+POST {{ROOT_URL}}/auth/signin HTTP/1.1
 content-type: application/json
 sid: {{sid}}
 
@@ -38,7 +50,7 @@ sid: {{sid}}
 
 ###
 // Fails password validation
-POST {{ROOT_URL}}/login HTTP/1.1
+POST {{ROOT_URL}}/auth/signin HTTP/1.1
 content-type: application/json
 sid: {{sid}}
 
