@@ -6,24 +6,25 @@
 
 | xxx | Name                            | When                    |
 | --- | ------------------------------- | ----------------------- |
-| [x] | CRUD to mongodb                 |
-| [x] | Auth Session with redis         |
-| [x] | Middleware System               |
-| [x] | Error Handling                  |
-| [x] | File Upload                     |
-| [x] | OAuth Github & Google           |
-| [x] | Email                           | April 6                 |
-| [x] | Containerize with Docker        | April 8                 |
-| [x] | Absolute timeout on Sessions    | April 9                 |
-| [x] | Reset Password                  | April 9                 |
-| [x] | Start prompt with chalk         | April 9                 |
-| [ ] | Auth Retry Limit                | How to implement ?      |
-| [x] | Database Seed with Faker        | After retry & reset     |
-| [ ] | Logger                          | After seed              |
-| [ ] | E2E tests                       | Soon                    |
-| [x] | Separate ROOT from backend      | Soon                    |
-| [x] | Husky setup                     | After root is seperated |
-| [ ] | Frontend sample usage endpoints | Unsure if will do       |
+| ✓   | CRUD to mongodb                 |
+| ✓   | Auth Session with redis         |
+| ✓   | Middleware System               |
+| ✓   | Error Handling                  |
+| ✓   | File Upload                     |
+| ✓   | OAuth Github & Google           |
+| ✓   | Email                           | April 6                 |
+| ✓   | Containerize with Docker        | April 8                 |
+| ✓   | Absolute timeout on Sessions    | April 9                 |
+| ✓   | Reset Password                  | April 9                 |
+| ✓   | Start prompt with chalk         | April 9                 |
+|     | Auth Retry Limit                | How to implement ?      |
+| ✓   | Database Seed with Faker        | After retry & reset     |
+|     | Logger                          | Unsure if will do       |
+|     | E2E tests                       | Soon                    |
+| ✓   | Separate ROOT from backend      | Soon                    |
+| ✓   | Husky setup                     | After root is seperated |
+|     | Frontend sample usage endpoints | After husky setup       |
+|     | Transfer from `joi` to `zod`    | Frontend is done        |
 
 ---
 
