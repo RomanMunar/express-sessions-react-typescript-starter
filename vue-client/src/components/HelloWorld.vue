@@ -1,7 +1,12 @@
 <template>
-  <div>
+  <div class="">
     <h1>{{ msg }}</h1>
-    <button @click="count++">count is: {{ count }}</button>
+    <button
+      class="bg-white px-3 py-2 border border-gray-500 rounded shadow"
+      @click="count++"
+    >
+      count is: {{ count }}
+    </button>
   </div>
 </template>
 
