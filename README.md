@@ -17,8 +17,8 @@
 | [x] | Absolute timeout on Sessions    | April 9                 |
 | [x] | Reset Password                  | April 9                 |
 | [x] | Start prompt with chalk         | April 9                 |
-| [ ] | Auth Retry Limit                | April 9                 |
-| [ ] | Database Seed with Faker        | After retry & reset     |
+| [ ] | Auth Retry Limit                | How to implement ?      |
+| [x] | Database Seed with Faker        | After retry & reset     |
 | [ ] | Logger                          | After seed              |
 | [ ] | E2E tests                       | Soon                    |
 | [ ] | Separate ROOT from backend      | Soon                    |
