@@ -24,9 +24,9 @@ export const active = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     if (isLoggedIn(req)) {
       const now = Date.now()
-      const createdAt = req.session!.createdAt
+      const createdAt = req.user!.sessionCreatedAt
 
-      if (now > createdAt + SESSION_ABSOLUTE_TIMEOUT) {
+      if (now > createdAt + +SESSION_ABSOLUTE_TIMEOUT) {
         await logOut(req, res)
 
         return next(new Unauthorized('Session expired'))

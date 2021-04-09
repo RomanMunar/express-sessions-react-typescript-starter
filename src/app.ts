@@ -19,7 +19,7 @@ export const createApp = (store: Store) => {
 
   app.use(upload)
 
-  // app.use(active) Let's make req.user be an object { userId, createdAt} So we can expire it after 3-5 days of inactivity
+  app.use(active)
 
   app.use(home)
 

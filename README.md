@@ -14,7 +14,7 @@
 | [x] | OAuth Github & Google           |
 | [x] | Email                           | April 6                 |
 | [x] | Containerize with Docker        | April 8                 |
-| [ ] | Absolute timeout on Sessions    | April 9                 |
+| [x] | Absolute timeout on Sessions    | April 9                 |
 | [x] | Reset Password                  | April 9                 |
 | [x] | Start prompt with chalk         | April 9                 |
 | [ ] | Auth Retry Limit                | April 9                 |
