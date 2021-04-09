@@ -14,7 +14,7 @@ services:
       MONGO_PASSWORD: secret
     volumes:
       - ./data:/data/db
-      - ./mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh:ro
+      - ./api/mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh:ro
 
   cache:
     image: redis:alpine
