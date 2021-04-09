@@ -10,7 +10,7 @@
 - [x] Error Handling
 - [x] File Upload
 - [x] OAuth Github & Google
-- [ ] Email
+- [x] Email
 - [ ] Reset Password
 - [x] Containerize with Docker & docker-compose
 - [ ] Rate limit
