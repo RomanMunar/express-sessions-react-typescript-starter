@@ -4,25 +4,26 @@
 
 ## Roadmap
 
-| xxx | Name                               | When                    |
-| --- | ---------------------------------- | ----------------------- |
-| [x] | CRUD to mongodb                    |
-| [x] | Auth Session with redis            |
-| [x] | Middleware System                  |
-| [x] | Error Handling                     |
-| [x] | File Upload                        |
-| [x] | OAuth Github & Google              |
-| [x] | Email                              | April 6                 |
-| [x] | Containerize with Docker           | April 8                 |
-| [ ] | Reset Password                     | April 9                 |
-| [ ] | Start prompt with chalk            | April 9                 |
-| [ ] | Auth Retry Limit                   | April 9                 |
-| [ ] | Database Seed with Faker           | After retry & reset     |
-| [ ] | Logger                             | After seed              |
-| [ ] | E2E tests                          | Soon                    |
-| [ ] | Separate ROOT from backend         | Soon                    |
-| [ ] | Husky setup                        | After root is seperated |
-| [ ] | Front end sample to show endpoints | Unsure if will do       |
+| xxx | Name                            | When                    |
+| --- | ------------------------------- | ----------------------- |
+| [x] | CRUD to mongodb                 |
+| [x] | Auth Session with redis         |
+| [x] | Middleware System               |
+| [x] | Error Handling                  |
+| [x] | File Upload                     |
+| [x] | OAuth Github & Google           |
+| [x] | Email                           | April 6                 |
+| [x] | Containerize with Docker        | April 8                 |
+| [ ] | Absolute timeout on Sessions    | April 9                 |
+| [x] | Reset Password                  | April 9                 |
+| [x] | Start prompt with chalk         | April 9                 |
+| [ ] | Auth Retry Limit                | April 9                 |
+| [ ] | Database Seed with Faker        | After retry & reset     |
+| [ ] | Logger                          | After seed              |
+| [ ] | E2E tests                       | Soon                    |
+| [ ] | Separate ROOT from backend      | Soon                    |
+| [ ] | Husky setup                     | After root is seperated |
+| [ ] | Frontend sample usage endpoints | Unsure if will do       |
 
 ---
 
