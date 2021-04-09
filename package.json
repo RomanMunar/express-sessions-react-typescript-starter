@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
+    "pre-commit": "cd api && npm run pre-commit && cd ../vue-client && npm run pre-commit",
     "prepare": "husky install"
   },
   "keywords": [],
