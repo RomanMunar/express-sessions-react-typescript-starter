@@ -1,3 +1,9 @@
+declare namespace Express {
+  interface User {
+    userId: string
+    sessionCreatedAt: number
+  }
+}
 declare namespace NodeJS {
   interface ProcessEnv {
     NODE_ENV: string

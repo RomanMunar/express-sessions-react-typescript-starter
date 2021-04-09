@@ -1,4 +1,4 @@
-import { createPassport, LocalVerifyFunction } from '../../passport'
+import { LocalVerifyFunction } from '../../passport'
 import { Express, Request } from 'express'
 import { Strategy as LocalStrategy } from 'passport-local'
 import passport from 'passport'
@@ -23,7 +23,7 @@ const verify: (
   req: Request,
   username: string,
   password: string,
-  done: (error: any, user?: any, msg?: { message: string }) => void
+  done: (error: any, user?: Express.User, msg?: { message: string }) => void
 ) => void = async (req, _, __, done) => {
   const { email, password, name } = req.body
 
@@ -41,7 +41,7 @@ const verify: (
         throw new BadRequest('Incorrect email or password')
       }
 
-      done(null, user.id)
+      done(null, { userId: user.id, sessionCreatedAt: Date.now() })
     } else {
       // Register
       await validate(registerSchema, req.body)
@@ -62,7 +62,7 @@ const verify: (
         text: `Hey ${newUser.name},\nPlease click the link to verify your account\n<a href="${link}" >${link}</a>`,
       })
 
-      done(null, newUser.id)
+      done(null, { userId: newUser.id, sessionCreatedAt: Date.now() })
     }
   } catch (e) {
     done(e)

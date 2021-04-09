@@ -17,7 +17,7 @@ router.get(
   '/home',
   auth,
   catchAsync(async (req, res) => {
-    const user = await User.findById(req.user)
+    const user = await User.findById(req.user?.userId)
     res.json(user)
   })
 )

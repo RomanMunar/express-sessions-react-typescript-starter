@@ -39,7 +39,7 @@ export type LocalVerifyFunction = (
   req: Request,
   username: string,
   password: string,
-  done: (error: any, user?: any, msg?: { message?: string }) => void
+  done: (error: any, user?: Express.User, msg?: { message?: string }) => void
 ) => void
 
 export type VerifyFunction = (
@@ -47,7 +47,7 @@ export type VerifyFunction = (
   __: string, // access_token
   ___: string, // refresh_token
   profile: any,
-  done: (error: any, user?: any, msg?: { message?: string }) => void
+  done: (error: any, user?: Express.User, msg?: { message?: string }) => void
 ) => void
 
 const defaultVerifyFunction = async (
@@ -55,7 +55,7 @@ const defaultVerifyFunction = async (
   __: string,
   ___: string,
   profile: any,
-  done: (error: any, user?: any) => void
+  done: (error: any, user?: Express.User) => void
 ) => {
   const { email, name, avatar } = {
     name: profile.displayName || '',
@@ -75,7 +75,7 @@ const defaultVerifyFunction = async (
       })
     }
 
-    done(null, user.id)
+    done(null, { userId: user.id, sessionCreatedAt: Date.now() })
   } catch (e) {
     done(e)
   }
@@ -108,8 +108,6 @@ export const createPassport = (
       }
       passport.authenticate(service, {
         session: true,
-        successRedirect: '/home',
-        passReqToCallback: true,
       })(req, res, next)
     })
   )
@@ -121,11 +119,10 @@ export const createPassport = (
       successRedirect: '/home',
       passReqToCallback: true,
     }),
-    catchAsync(async (req, res, next) => {
+    catchAsync(async (req, _, next) => {
       if (postRequest) {
         await postRequest(req)
       }
-      res.json(req.user)
       next()
     })
   )
