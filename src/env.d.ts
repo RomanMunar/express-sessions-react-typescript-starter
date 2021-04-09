@@ -21,5 +21,9 @@ declare namespace NodeJS {
     GOOGLE_OAUTH_CLIENT_SECRET: string
     GITHUB_OAUTH_CLIENT_ID: string
     GITHUB_OAUTH_CLIENT_SECRET: string
+    SMTP_HOST: string
+    SMTP_PORT: string
+    SMTP_USERNAME: string
+    SMTP_PASSWORD: string
   }
 }

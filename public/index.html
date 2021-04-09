@@ -8,6 +8,7 @@
     <div class="container">
       <pre></pre>
       <button id="signOut" class="signoutBtn">Sign Out</button>
+      <button id="resetPassword" class="resetPasswordBtn">Reset Pasword</button>
       <div class="auth">
         <h1>Sign In</h1>
         <div id="form">
@@ -85,6 +86,7 @@
     const error = document.querySelector('.error')
     const loginSubmit = document.querySelector('.loginAuth-btn')
     const jsonDisplay = document.querySelector('pre')
+    const reset = document.querySelector('#resetPassword')
 
     const onLoginSubmit = async () => {
       const body = {
@@ -159,11 +161,15 @@
       }
     }
 
-    const onSignIn = () => {
+    const onSignIn = jsonDisplayArg => {
       auths.map(el => (el.style.display = 'none'))
       signOutBtn.style.display = 'block'
-      error.textContent =
-        'Check your email for verification\n It will show on the json data to the left'
+      reset.style.display = 'block'
+      jsonDisplay.style.display = 'block'
+      jsonDisplay.innerHTML = JSON.stringify(jsonDisplayArg, null, 2)
+      error.textContent = jsonDisplayArg.verifiedAt
+        ? 'Email verified, NICE!'
+        : 'Check your email for verification\n It will show on the json data to the left'
     }
 
     const onSignOut = async e => {
@@ -173,11 +179,12 @@
         auths.map(el => (el.style.display = 'block'))
         signOutBtn.style.display = 'none'
         jsonDisplay.style.display = 'none'
+        reset.style.display = 'none'
       }
     }
+    reset.addEventListener('click', e => {})
     const signoutBTN = document.querySelector('#signOut')
     signoutBTN.addEventListener('click', onSignOut)
-
     const input = document.querySelector('input[type="file"]')
     input.addEventListener('change', uploadFileHandler)
     const submitBtn = document.querySelector('button[type="submit"]')
@@ -185,8 +192,7 @@
     window.addEventListener('load', async function (e) {
       const res = await fetch('/home')
       if (res.ok) {
-        jsonDisplay.innerHTML = JSON.stringify(await res.json(), null, 2)
-        onSignIn()
+        onSignIn(await res.json())
       }
     })
   </script>
