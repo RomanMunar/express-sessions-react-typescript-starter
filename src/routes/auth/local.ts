@@ -55,11 +55,11 @@ const verify: (
 
       const link = newUser.verificationUrl()
 
-      console.log({link})
       await sendMail({
         to: email,
         subject: 'Verify your email address',
-        text: link,
+        html: `<b>Hey ${newUser.name},</b><br/>\tPlease click the link to verify your account<br/><a href="${link}" >${link}</a>`,
+        text: `Hey ${newUser.name},\nPlease click the link to verify your account\n<a href="${link}" >${link}</a>`,
       })
 
       done(null, newUser.id)

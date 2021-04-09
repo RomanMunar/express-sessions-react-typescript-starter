@@ -27,11 +27,13 @@ router.get(
 
     await markAsVerified(user)
 
-    res.json({ message: 'OK' })
+    res.send(
+      '<h2>Account successfully verified</h2>. <h3><a href="/">Click here to be Redirected to homepage</a></h3>'
+    )
   })
 )
 
-router.get(
+router.post(
   '/email/resend',
   catchAsync(async (req, res) => {
     await validate(resendEmailSchema, req.body)
@@ -46,7 +48,8 @@ router.get(
       await sendMail({
         to: email,
         subject: 'Verify your email address',
-        text: link,
+        html: `<b>Hey ${user.name},</b><br/>\tPlease click the link to verify your account<br/><a href="${link}" >${link}</a>`,
+        text: `Hey ${user.name},\nPlease click the link to verify your account\n<a href="${link}" >${link}</a>`,
       })
     }
 
