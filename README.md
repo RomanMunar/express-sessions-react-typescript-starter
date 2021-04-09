@@ -21,8 +21,8 @@
 | [x] | Database Seed with Faker        | After retry & reset     |
 | [ ] | Logger                          | After seed              |
 | [ ] | E2E tests                       | Soon                    |
-| [ ] | Separate ROOT from backend      | Soon                    |
-| [ ] | Husky setup                     | After root is seperated |
+| [x] | Separate ROOT from backend      | Soon                    |
+| [x] | Husky setup                     | After root is seperated |
 | [ ] | Frontend sample usage endpoints | Unsure if will do       |
 
 ---

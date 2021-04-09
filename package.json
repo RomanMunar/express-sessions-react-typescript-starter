@@ -1,0 +1,21 @@
+{
+  "name": "aaa",
+  "version": "1.0.0",
+  "description": "---",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\"",
+    "prepare": "husky install"
+  },
+  "keywords": [],
+  "author": "Roman Munar",
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pre-commit"
+    }
+  },
+  "devDependencies": {
+    "husky": "^6.0.0"
+  }
+}
