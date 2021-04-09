@@ -10,8 +10,8 @@ import {
 } from './routes/auth/index'
 
 export const startPassport = (app: Express) => {
-  passport.serializeUser((userId: Express.User, done) => done(null, userId))
-  passport.deserializeUser((userId: Express.User, done) => done(null, userId))
+  passport.serializeUser((user: Express.User, done) => done(null, user))
+  passport.deserializeUser((user: Express.User, done) => done(null, user))
 
   app.use(passport.initialize())
   app.use(passport.session())
@@ -39,7 +39,7 @@ export type LocalVerifyFunction = (
   req: Request,
   username: string,
   password: string,
-  done: (error: any, user?: Express.User, msg?: { message?: string }) => void
+  done: (error: any, user?: Express.User, msg?: { message: string }) => void
 ) => void
 
 export type VerifyFunction = (

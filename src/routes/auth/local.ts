@@ -1,5 +1,5 @@
 import { LocalVerifyFunction } from '../../passport'
-import { Express, Request } from 'express'
+import { Express } from 'express'
 import { Strategy as LocalStrategy } from 'passport-local'
 import passport from 'passport'
 import { User } from '../../models'
@@ -19,12 +19,7 @@ Flow:
     |---> Login
     |---> done(null,user.id)
  */
-const verify: (
-  req: Request,
-  username: string,
-  password: string,
-  done: (error: any, user?: Express.User, msg?: { message: string }) => void
-) => void = async (req, _, __, done) => {
+const verify: LocalVerifyFunction = async (req, _, __, done) => {
   const { email, password, name } = req.body
 
   try {
@@ -87,7 +82,7 @@ export const createLocalPassport = (app: Express) => {
     passport.authenticate('local', {
       passReqToCallback: true,
     }),
-    function (_, res) {
+    (_, res) => {
       res.json({ message: 'OK' })
     }
   )
