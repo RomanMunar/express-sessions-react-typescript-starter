@@ -110,7 +110,7 @@ export const getUser = async () => {
   return 'Not logged in or session expired'
 }
 
-const { REACT_APP_OAUTH_GITHUB_LINK, REACT_APP_OAUTH_GOOGLE_LINK } = process.env!
+const { REACT_APP_OAUTH_GITHUB_LINK, REACT_APP_OAUTH_GOOGLE_LINK } = process.env
 
 export const githubSignInLink = REACT_APP_OAUTH_GITHUB_LINK
 export const googleSignInLink = REACT_APP_OAUTH_GOOGLE_LINK
