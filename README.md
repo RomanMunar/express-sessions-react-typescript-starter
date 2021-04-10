@@ -1,5 +1,17 @@
 # NodeJS Typescript Mongo Boilerplate
 
+This is a starter kit for developing modern web apps with a full auth system. Features reset password, email verification, session store with redis. Also, a react client is configured to showcase how to use it with the backend. A vue/angular client is currently on the roadmap. If you can contribute on said frameworks, feel free to open a PR.
+
+- [NodeJS Typescript Mongo Boilerplate](#nodejs-typescript-mongo-boilerplate)
+  - [Roadmap](#roadmap)
+  - [TechStack](#techstack)
+  - [Features](#features)
+  - [Run Locally](#run-locally)
+    - [Requirements](#requirements)
+    - [Backend](#backend)
+    - [Client](#client)
+    -
+
 ---
 
 ## Roadmap
