@@ -27,7 +27,7 @@ type StrategyConfig =
       clientSecret: string
       scope?: string | string[]
     }
-  | {}
+  | Record<string, unknown>
 
 export type GetUserInformationFunction = (
   profile: any
@@ -75,7 +75,7 @@ const defaultVerifyFunction = async (
       })
     }
 
-    done(null, { userId: user.id, sessionCreatedAt: Date.now() })
+    done(null, { user, sessionCreatedAt: Date.now() })
   } catch (e) {
     done(e)
   }
@@ -86,7 +86,14 @@ export const createPassport = (
   service: string,
   Strategy: new (...args: any) => passport.Strategy,
   strategyConfig: StrategyConfig,
-  { preRequest = (_req: Request) => {}, postRequest = (_req: Request) => {} } = {},
+  {
+    preRequest = (_req: Request) => {
+      return
+    },
+    postRequest = (_req: Request) => {
+      return
+    },
+  } = {},
   verify: LocalVerifyFunction | VerifyFunction = defaultVerifyFunction
 ) => {
   passport.use(
@@ -119,10 +126,12 @@ export const createPassport = (
       successRedirect: '/home',
       passReqToCallback: true,
     }),
-    catchAsync(async (req, _, next) => {
+    catchAsync(async (req, res, next) => {
       if (postRequest) {
         await postRequest(req)
       }
+      //@ts-ignore
+      res.json({ ...req.user.user })
       next()
     })
   )
