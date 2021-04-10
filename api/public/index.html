@@ -1,212 +1,184 @@
-<html>
-  <head>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="normalize.css" />
-  </head>
-  <body>
-    <div class="error"></div>
-    <div class="container">
-      <pre></pre>
-      <button id="signOut" class="signoutBtn">Sign Out</button>
-      <button id="resetPassword" class="resetPasswordBtn">Reset Pasword</button>
-      <div class="auth">
-        <h1>Sign In</h1>
-        <div id="form">
-          <label for="email"
-            ><span>Email</span
-            ><input type="text" name="email" id="email" placeholder="Your Email"
-          /></label>
-          <label for="name"
-            ><span>Name</span
-            ><input type="text" name="name" id="name" placeholder="Your Name"
-          /></label>
-          <label for="password">
-            <span>Password</span>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Your Password"
-          /></label>
-          <label for="password">
-            <span>Confirm Password</span>
-            <input
-              type="password"
-              name="confirm password"
-              id="passwordConfirmation"
-              placeholder="Your Password"
-          /></label>
-          <button type="submit" class="auth-btn">Log In</button>
-        </div>
-      </div>
-      <div style="display: flex; flex-direction: column">
-        <div class="auth">
-          <h1>Log In</h1>
-          <div id="loginForm">
-            <label for="email"
-              ><span>Email</span
-              ><input type="text" name="email" id="loginEmail" placeholder="Your Email"
-            /></label>
-            <label for="password">
-              <span>Password</span>
-              <input
-                type="password"
-                name="password"
-                id="loginPassword"
-                placeholder="Your Password"
-            /></label>
-            <button type="submit" class="loginAuth-btn">Log In</button>
-          </div>
-        </div>
-        <div class="auth">
-          <h1>Sign In using Github</h1>
-          <a class="github auth-btn" href="/auth/github">Log In With Github</a>
-        </div>
-        <div class="auth">
-          <h1>Sign In using Google</h1>
-          <a class="auth-btn" href="/auth/google">Log In With Google</a>
-        </div>
-      </div>
-      <div class="divider"></div>
-      <div class="upload">
-        <img src="" id="upload-input" />
-        <div>
-          <h1>Upload an image</h1>
-          <input type="file" name="image" accept="image/png, image/jpeg" />
-        </div>
-      </div>
-    </div>
-  </body>
-  <script>
-    const uploadInput = document.querySelector('#upload-input')
-    const uploadContainer = document.querySelector('.upload')
-    const form = document.querySelector('#form')
-    const signOutBtn = document.querySelector('.signoutBtn')
-    const auths = Array.from(document.querySelectorAll('div.auth'))
-    const error = document.querySelector('.error')
-    const loginSubmit = document.querySelector('.loginAuth-btn')
-    const jsonDisplay = document.querySelector('pre')
-    const reset = document.querySelector('#resetPassword')
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>NodeJS Typescript Mongo Boilerplate</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="nodejs-typescript-mongo-boilerplate">NodeJS Typescript Mongo Boilerplate</h1>
+<hr>
+<h2 id="roadmap">Roadmap</h2>
+<table>
+<thead>
+<tr>
+<th>xxx</th>
+<th>Name</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>✓</td>
+<td>CRUD to mongodb</td>
+<td></td>
+</tr>
+<tr>
+<td>✓</td>
+<td>Auth Session with redis</td>
+<td></td>
+</tr>
+<tr>
+<td>✓</td>
+<td>Middleware System</td>
+<td></td>
+</tr>
+<tr>
+<td>✓</td>
+<td>Error Handling</td>
+<td></td>
+</tr>
+<tr>
+<td>✓</td>
+<td>File Upload</td>
+<td></td>
+</tr>
+<tr>
+<td>✓</td>
+<td>OAuth Github &amp; Google</td>
+<td></td>
+</tr>
+<tr>
+<td>✓</td>
+<td>Email</td>
+<td>April 6</td>
+</tr>
+<tr>
+<td>✓</td>
+<td>Containerize with Docker</td>
+<td>April 8</td>
+</tr>
+<tr>
+<td>✓</td>
+<td>Absolute timeout on Sessions</td>
+<td>April 9</td>
+</tr>
+<tr>
+<td>✓</td>
+<td>Reset Password</td>
+<td>April 9</td>
+</tr>
+<tr>
+<td>✓</td>
+<td>Start prompt with chalk</td>
+<td>April 9</td>
+</tr>
+<tr>
+<td></td>
+<td>Auth Retry Limit</td>
+<td>How to implement ?</td>
+</tr>
+<tr>
+<td>✓</td>
+<td>Database Seed with Faker</td>
+<td>After retry &amp; reset</td>
+</tr>
+<tr>
+<td></td>
+<td>Logger</td>
+<td>Unsure if will do</td>
+</tr>
+<tr>
+<td></td>
+<td>E2E tests</td>
+<td>Soon</td>
+</tr>
+<tr>
+<td>✓</td>
+<td>Separate ROOT from backend</td>
+<td>Soon</td>
+</tr>
+<tr>
+<td>✓</td>
+<td>Husky setup</td>
+<td>After root is seperated</td>
+</tr>
+<tr>
+<td>✓</td>
+<td>Frontend sample usage endpoints</td>
+<td>After husky setup</td>
+</tr>
+<tr>
+<td></td>
+<td>Transfer from <code>joi</code> to <code>zod</code></td>
+<td>Frontend is done</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="techstack">TechStack</h2>
+<p>Typescript front to back</p>
+<ul>
+<li>ReactJS</li>
+<li>NodeJS
+<ul>
+<li>Express</li>
+<li>MongoDB</li>
+</ul>
+</li>
+<li>Joi for input validation</li>
+</ul>
+<h2 id="features">Features</h2>
+<ul>
+<li>Complete MongoDB Auth System (Reset password, Email verification, Sessions)</li>
+<li>Husky (Lint-staged,Eslint) setup</li>
+<li>Typescript Full stack</li>
+<li>Docker Services</li>
+<li>Sessions with Redis</li>
+<li>Schema Validation using Joi</li>
+<li>OAuth with github and google</li>
+</ul>
+<h2 id="run-locally">Run Locally</h2>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>NodeJS</li>
+<li>Docker</li>
+<li>Yarn(preferred)/NPM</li>
+</ul>
+<h3 id="backend">Backend</h3>
+<ol>
+<li>Run <code>git clone https://github.com/romanmunar/express-sessions-react-typescript-starter</code></li>
+<li>Run <code>cd express-sessions-react-typescript-starter</code> and Run <code>yarn</code></li>
+<li>Install packages on backend <code>cd ./api</code>, Run <code>yarn</code></li>
+<li>While installing, Fill up the <code>.env.example</code> file with your own creds.(avoid changing the ports)</li>
+<li>Run <code>yarn up</code> to start the docker services</li>
+<li>Run <code>yarn dev</code> to run nodemon and watch tsc</li>
+</ol>
+<h3 id="client">Client</h3>
+<ol>
+<li>Open a new terminal and <code>cd ../react-client</code></li>
+<li>Install packages on client, run <code>yarn</code></li>
+<li>Run <code>yarn dev</code> to start the dev server</li>
+<li>Open browser to <a href="http://localhost:3000">a</a></li>
+</ol>
+<hr>
 
-    const onLoginSubmit = async () => {
-      const body = {
-        email: document.querySelector('#loginEmail').value,
-        password: document.querySelector('#loginPassword').value,
-      }
-      const config = {
-        body: JSON.stringify(body),
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-      }
-      const data = await fetch('/auth/signin', config).then(res => res.json())
-      if (data.message.split(' ').includes('logged')) {
-        error.textContent = 'You are already logged in'
-      } else if (data.message.split(' ').includes('validate')) {
-        error.textContent =
-          'password should have one uppercase, one digit, and 8 char long'
-      } else {
-        const res = await fetch('/home')
-        if (res.ok) {
-          onSignIn(await res.json())
-        }
-      }
-    }
-    loginSubmit.addEventListener('click', onLoginSubmit)
-
-    const uploadFileHandler = async e => {
-      const file = e.target.files[0]
-      const formData = new FormData()
-      formData.append('image', file)
-
-      try {
-        const config = {
-          method: 'POST',
-          body: formData,
-        }
-
-        const data = await fetch('/upload', config).then(res => res.json())
-        setUploadInput(data.path)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-
-    const setUploadInput = path => {
-      uploadInput.setAttribute('src', path)
-      uploadContainer.classList += ' upload-done'
-    }
-
-    const onFormSubmit = async e => {
-      const body = {
-        email: document.querySelector('input#email').value,
-        name: document.querySelector('input#name').value,
-        passwordConfirmation: document.querySelector('input#passwordConfirmation').value,
-        password: document.querySelector('input#password').value,
-      }
-      const config = {
-        body: JSON.stringify(body),
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-      }
-      const data = await fetch('/auth/signin', config).then(res => res.json())
-      if (data.message !== 'OK') {
-        error.textContent = 'You are already logged in'
-      } else {
-        const res = await fetch('/home')
-        if (res.ok) {
-          jsonDisplay.innerHTML = JSON.stringify(await res.json(), null, 2)
-          onSignIn(await res.json())
-        }
-      }
-    }
-
-    const onSignIn = jsonDisplayArg => {
-      localStorage.setItem('email', jsonDisplayArg.email)
-      auths.map(el => (el.style.display = 'none'))
-      signOutBtn.style.display = 'block'
-      reset.style.display = 'block'
-      jsonDisplay.style.display = 'block'
-      jsonDisplay.innerHTML = JSON.stringify(jsonDisplayArg, null, 2)
-      error.textContent = jsonDisplayArg.verifiedAt
-        ? 'Email verified, NICE!'
-        : 'Check your email for verification\n It will show on the json data to the left'
-    }
-
-    const onSignOut = async e => {
-      const data = await fetch('/auth/signout').then(res => res.json())
-      if (data.message == 'OK') {
-        auths.map(el => (el.style.display = 'block'))
-        signOutBtn.style.display = 'none'
-        jsonDisplay.style.display = 'none'
-        reset.style.display = 'none'
-        error.textContent = ''
-      }
-    }
-
-    const onResetPass = async e => {
-      e.preventDefault()
-      const body = JSON.stringify({ email: localStorage.getItem('email') })
-      const config = {
-        body,
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-      }
-      const data = await fetch('/password/email', config).then(res => res.json())
-      error.textContent = data.message
-    }
-
-    reset.addEventListener('click', onResetPass)
-    const signoutBTN = document.querySelector('#signOut')
-    signoutBTN.addEventListener('click', onSignOut)
-    const input = document.querySelector('input[type="file"]')
-    input.addEventListener('change', uploadFileHandler)
-    const submitBtn = document.querySelector('button[type="submit"]')
-    submitBtn.addEventListener('click', onFormSubmit)
-    window.addEventListener('load', async function (e) {
-      const res = await fetch('/home')
-      if (res.ok) {
-        onSignIn(await res.json())
-      }
-    })
-  </script>
-</html>
+    </body>
+    </html>
