@@ -23,7 +23,7 @@
 |     | E2E tests                       | Soon                    |
 | ✓   | Separate ROOT from backend      | Soon                    |
 | ✓   | Husky setup                     | After root is seperated |
-|     | Frontend sample usage endpoints | After husky setup       |
+| ✓   | Frontend sample usage endpoints | After husky setup       |
 |     | Transfer from `joi` to `zod`    | Frontend is done        |
 
 ---
