@@ -33,32 +33,43 @@
 Typescript front to back
 
 - ReactJS
-  - Redux w/ redux-toolkit
-  - Tailwind / Styled-system based CSS-in-JS
 - NodeJS
   - Express
   - MongoDB
+- Joi for input validation
 
 ## Features
 
-- Complete MongoDB Auth System (Reset password, Email verification, encryption, etc...)
+- Complete MongoDB Auth System (Reset password, Email verification, Sessions)
+- Husky (Lint-staged,Eslint) setup
+- Typescript Full stack
 - Docker Services
 - Sessions with Redis
 - Schema Validation using Joi
-- ***
+- OAuth with github and google
 
 ## Run Locally
 
-1. Install following programs
+### Requirements
 
 - NodeJS
 - Docker
 - Yarn(preferred)/NPM
 
-2. Run `git clone https://github.com/romanmunar/typescript-nodejs-express-passport-session-starter`
-3. Run `cd typescript-nodejs-express-passport-session-starter` and Run `yarn`
-4. While installing, Fill up the `.env.example` file with your own creds.
+### Backend
+
+1. Run `git clone https://github.com/romanmunar/express-sessions-react-typescript-starter`
+2. Run `cd express-sessions-react-typescript-starter` and Run `yarn`
+3. Install packages on backend `cd ./api`, Run `yarn`
+4. While installing, Fill up the `.env.example` file with your own creds.(avoid changing the ports)
 5. Run `yarn up` to start the docker services
 6. Run `yarn dev` to run nodemon and watch tsc
+
+### Client
+
+1. Open a new terminal and `cd ../react-client`
+2. Install packages on client, run `yarn`
+3. Run `yarn dev` to start the dev server
+4. Open browser to [a](http://localhost:3000)
 
 ---
