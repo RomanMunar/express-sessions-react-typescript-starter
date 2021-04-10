@@ -1,184 +1,217 @@
 <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>NodeJS Typescript Mongo Boilerplate</title>
-        <style>
-</style>
-        
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-<style>
-            body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
-                font-size: 14px;
-                line-height: 1.6;
-            }
-        </style>
-        <style>
-.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
-</style>
-        
-        
-        
-    </head>
-    <body class="vscode-body vscode-light">
-        <h1 id="nodejs-typescript-mongo-boilerplate">NodeJS Typescript Mongo Boilerplate</h1>
-<hr>
-<h2 id="roadmap">Roadmap</h2>
-<table>
-<thead>
-<tr>
-<th>xxx</th>
-<th>Name</th>
-<th>When</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>✓</td>
-<td>CRUD to mongodb</td>
-<td></td>
-</tr>
-<tr>
-<td>✓</td>
-<td>Auth Session with redis</td>
-<td></td>
-</tr>
-<tr>
-<td>✓</td>
-<td>Middleware System</td>
-<td></td>
-</tr>
-<tr>
-<td>✓</td>
-<td>Error Handling</td>
-<td></td>
-</tr>
-<tr>
-<td>✓</td>
-<td>File Upload</td>
-<td></td>
-</tr>
-<tr>
-<td>✓</td>
-<td>OAuth Github &amp; Google</td>
-<td></td>
-</tr>
-<tr>
-<td>✓</td>
-<td>Email</td>
-<td>April 6</td>
-</tr>
-<tr>
-<td>✓</td>
-<td>Containerize with Docker</td>
-<td>April 8</td>
-</tr>
-<tr>
-<td>✓</td>
-<td>Absolute timeout on Sessions</td>
-<td>April 9</td>
-</tr>
-<tr>
-<td>✓</td>
-<td>Reset Password</td>
-<td>April 9</td>
-</tr>
-<tr>
-<td>✓</td>
-<td>Start prompt with chalk</td>
-<td>April 9</td>
-</tr>
-<tr>
-<td></td>
-<td>Auth Retry Limit</td>
-<td>How to implement ?</td>
-</tr>
-<tr>
-<td>✓</td>
-<td>Database Seed with Faker</td>
-<td>After retry &amp; reset</td>
-</tr>
-<tr>
-<td></td>
-<td>Logger</td>
-<td>Unsure if will do</td>
-</tr>
-<tr>
-<td></td>
-<td>E2E tests</td>
-<td>Soon</td>
-</tr>
-<tr>
-<td>✓</td>
-<td>Separate ROOT from backend</td>
-<td>Soon</td>
-</tr>
-<tr>
-<td>✓</td>
-<td>Husky setup</td>
-<td>After root is seperated</td>
-</tr>
-<tr>
-<td>✓</td>
-<td>Frontend sample usage endpoints</td>
-<td>After husky setup</td>
-</tr>
-<tr>
-<td></td>
-<td>Transfer from <code>joi</code> to <code>zod</code></td>
-<td>Frontend is done</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h2 id="techstack">TechStack</h2>
-<p>Typescript front to back</p>
-<ul>
-<li>ReactJS</li>
-<li>NodeJS
-<ul>
-<li>Express</li>
-<li>MongoDB</li>
-</ul>
-</li>
-<li>Joi for input validation</li>
-</ul>
-<h2 id="features">Features</h2>
-<ul>
-<li>Complete MongoDB Auth System (Reset password, Email verification, Sessions)</li>
-<li>Husky (Lint-staged,Eslint) setup</li>
-<li>Typescript Full stack</li>
-<li>Docker Services</li>
-<li>Sessions with Redis</li>
-<li>Schema Validation using Joi</li>
-<li>OAuth with github and google</li>
-</ul>
-<h2 id="run-locally">Run Locally</h2>
-<h3 id="requirements">Requirements</h3>
-<ul>
-<li>NodeJS</li>
-<li>Docker</li>
-<li>Yarn(preferred)/NPM</li>
-</ul>
-<h3 id="backend">Backend</h3>
-<ol>
-<li>Run <code>git clone https://github.com/romanmunar/express-sessions-react-typescript-starter</code></li>
-<li>Run <code>cd express-sessions-react-typescript-starter</code> and Run <code>yarn</code></li>
-<li>Install packages on backend <code>cd ./api</code>, Run <code>yarn</code></li>
-<li>While installing, Fill up the <code>.env.example</code> file with your own creds.(avoid changing the ports)</li>
-<li>Run <code>yarn up</code> to start the docker services</li>
-<li>Run <code>yarn dev</code> to run nodemon and watch tsc</li>
-</ol>
-<h3 id="client">Client</h3>
-<ol>
-<li>Open a new terminal and <code>cd ../react-client</code></li>
-<li>Install packages on client, run <code>yarn</code></li>
-<li>Run <code>yarn dev</code> to start the dev server</li>
-<li>Open browser to <a href="http://localhost:3000">a</a></li>
-</ol>
-<hr>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>NodeJS Typescript Mongo Boilerplate</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css"
+    />
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui,
+          'Ubuntu', 'Droid Sans', sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        display: flex;
+        background: #f0f8dd;
+      }
+    </style>
+    <style>
+      .task-list-item {
+        list-style-type: none;
+      }
+      .task-list-item-checkbox {
+        margin-left: -20px;
+        vertical-align: middle;
+      }
+      .container {
+        max-width: 500px;
+        width: 100%;
+        margin: auto;
+      }
+    </style>
+  </head>
 
-    </body>
-    </html>
+  <body class="vscode-body vscode-light">
+    <div class="container">
+      <h1 id="nodejs-typescript-mongo-boilerplate">
+        NodeJS Typescript Mongo Boilerplate
+      </h1>
+      <hr />
+      <h2 id="roadmap">Roadmap</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>xxx</th>
+            <th>Name</th>
+            <th>When</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>✓</td>
+            <td>CRUD to mongodb</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>✓</td>
+            <td>Auth Session with redis</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>✓</td>
+            <td>Middleware System</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>✓</td>
+            <td>Error Handling</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>✓</td>
+            <td>File Upload</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>✓</td>
+            <td>OAuth Github &amp; Google</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>✓</td>
+            <td>Email</td>
+            <td>April 6</td>
+          </tr>
+          <tr>
+            <td>✓</td>
+            <td>Containerize with Docker</td>
+            <td>April 8</td>
+          </tr>
+          <tr>
+            <td>✓</td>
+            <td>Absolute timeout on Sessions</td>
+            <td>April 9</td>
+          </tr>
+          <tr>
+            <td>✓</td>
+            <td>Reset Password</td>
+            <td>April 9</td>
+          </tr>
+          <tr>
+            <td>✓</td>
+            <td>Start prompt with chalk</td>
+            <td>April 9</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Auth Retry Limit</td>
+            <td>How to implement ?</td>
+          </tr>
+          <tr>
+            <td>✓</td>
+            <td>Database Seed with Faker</td>
+            <td>After retry &amp; reset</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Logger</td>
+            <td>Unsure if will do</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>E2E tests</td>
+            <td>Soon</td>
+          </tr>
+          <tr>
+            <td>✓</td>
+            <td>Separate ROOT from backend</td>
+            <td>Soon</td>
+          </tr>
+          <tr>
+            <td>✓</td>
+            <td>Husky setup</td>
+            <td>After root is seperated</td>
+          </tr>
+          <tr>
+            <td>✓</td>
+            <td>Frontend sample usage endpoints</td>
+            <td>After husky setup</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Transfer from <code>joi</code> to <code>zod</code></td>
+            <td>Frontend is done</td>
+          </tr>
+        </tbody>
+      </table>
+      <hr />
+      <h2 id="techstack">TechStack</h2>
+      <p>Typescript front to back</p>
+      <ul>
+        <li>ReactJS</li>
+        <li>
+          NodeJS
+          <ul>
+            <li>Express</li>
+            <li>MongoDB</li>
+          </ul>
+        </li>
+        <li>Joi for input validation</li>
+      </ul>
+      <h2 id="features">Features</h2>
+      <ul>
+        <li>
+          Complete MongoDB Auth System (Reset password, Email verification, Sessions)
+        </li>
+        <li>Husky (Lint-staged,Eslint) setup</li>
+        <li>Typescript Full stack</li>
+        <li>Docker Services</li>
+        <li>Sessions with Redis</li>
+        <li>Schema Validation using Joi</li>
+        <li>OAuth with github and google</li>
+      </ul>
+      <h2 id="run-locally">Run Locally</h2>
+      <h3 id="requirements">Requirements</h3>
+      <ul>
+        <li>NodeJS</li>
+        <li>Docker</li>
+        <li>Yarn(preferred)/NPM</li>
+      </ul>
+      <h3 id="backend">Backend</h3>
+      <ol>
+        <li>
+          Run
+          <code
+            >git clone
+            https://github.com/romanmunar/express-sessions-react-typescript-starter</code
+          >
+        </li>
+        <li>
+          Run <code>cd express-sessions-react-typescript-starter</code> and Run
+          <code>yarn</code>
+        </li>
+        <li>Install packages on backend <code>cd ./api</code>, Run <code>yarn</code></li>
+        <li>
+          While installing, Fill up the <code>.env.example</code> file with your own
+          creds.(avoid changing the ports)
+        </li>
+        <li>Run <code>yarn up</code> to start the docker services</li>
+        <li>Run <code>yarn dev</code> to run nodemon and watch tsc</li>
+      </ol>
+      <h3 id="client">Client</h3>
+      <ol>
+        <li>Open a new terminal and <code>cd ../react-client</code></li>
+        <li>Install packages on client, run <code>yarn</code></li>
+        <li>Run <code>yarn dev</code> to start the dev server</li>
+        <li>Open browser to <a href="http://localhost:3000">a</a></li>
+      </ol>
+      <hr />
+    </div>
+  </body>
+</html>
