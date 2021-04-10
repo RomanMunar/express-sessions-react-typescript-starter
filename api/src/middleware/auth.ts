@@ -24,7 +24,8 @@ export const active = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     if (isLoggedIn(req)) {
       const now = Date.now()
-      const createdAt = req.user!.sessionCreatedAt
+      // @ts-ignore
+      const createdAt = req.user.sessionCreatedAt
 
       if (now > createdAt + +SESSION_ABSOLUTE_TIMEOUT) {
         await logOut(req, res)

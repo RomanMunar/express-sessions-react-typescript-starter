@@ -36,7 +36,7 @@ const verify: LocalVerifyFunction = async (req, _, __, done) => {
         throw new BadRequest('Incorrect email or password')
       }
 
-      done(null, { userId: user.id, sessionCreatedAt: Date.now() })
+      done(null, { user, sessionCreatedAt: Date.now() })
     } else {
       // Register
       await validate(registerSchema, req.body)
@@ -57,7 +57,7 @@ const verify: LocalVerifyFunction = async (req, _, __, done) => {
         text: `Hey ${newUser.name},\nPlease click the link to verify your account\n<a href="${link}" >${link}</a>`,
       })
 
-      done(null, { userId: newUser.id, sessionCreatedAt: Date.now() })
+      done(null, { user, sessionCreatedAt: Date.now() })
     }
   } catch (e) {
     done(e)
@@ -82,8 +82,9 @@ export const createLocalPassport = (app: Express) => {
     passport.authenticate('local', {
       passReqToCallback: true,
     }),
-    (_, res) => {
-      res.json({ message: 'OK' })
+    (req, res) => {
+      //@ts-ignore removes sessionCreatedAt
+      res.json({ ...req.user.user })
     }
   )
 

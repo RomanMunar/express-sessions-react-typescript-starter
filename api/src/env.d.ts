@@ -1,6 +1,13 @@
+import { IUser } from './models'
+
 declare namespace Express {
   interface User {
-    userId: string
+    user: Omit<IUser, 'password'>
+    sessionCreatedAt: number
+  }
+
+  interface Request {
+    user: Omit<IUser, 'password'>
     sessionCreatedAt: number
   }
 }
