@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
-    "pre-commit": "cd api && yarn pre-commit && cd ../vue-client && yarn pre-commit",
+    "pre-commit": "cd backend && yarn pre-commit && cd ../vue-client && yarn pre-commit",
     "prepare": "husky install",
-    "build": "cd api && yarn build && cd ../react-client && yarn build",
-    "start": "cd api && yarn start",
-    "installDeps": "cd api && yarn && cd ../react-client && yarn"
+    "build": "cd backend && yarn build && cd ../react-client && yarn build",
+    "start": "cd backend && yarn start",
+    "installDeps": "cd backend && yarn && cd ../react-client && yarn"
   },
   "keywords": [],
   "author": "Roman Munar",

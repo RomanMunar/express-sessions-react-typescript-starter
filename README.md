@@ -72,7 +72,7 @@ Typescript front to back
 
 1. Run `git clone https://github.com/romanmunar/express-sessions-react-typescript-starter`
 2. Run `cd express-sessions-react-typescript-starter` and Run `yarn`
-3. Install packages on backend `cd ./api`, Run `yarn`
+3. Install packages on backend `cd ./backend`, Run `yarn`
 4. While installing, Fill up the `.env.example` file with your own creds.(avoid changing the ports)
 5. Run `yarn up` to start the docker services
 6. Run `yarn dev` to run nodemon and watch tsc
