@@ -9,7 +9,7 @@
     "prepare": "husky install",
     "build": "cd backend && yarn build && cd ../react-client && yarn build",
     "start": "cd backend && yarn start",
-    "installDeps": "cd backend && yarn && cd ../react-client && yarn"
+    "install": "cd backend && yarn && cd ../react-client && yarn"
   },
   "keywords": [],
   "author": "Roman Munar",
