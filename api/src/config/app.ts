@@ -14,5 +14,9 @@ export const APP_ORIGIN = `${APP_PROTOCOL}://${APP_HOSTNAME}:${APP_PORT}`
 
 const dirname = path.resolve()
 export const STATIC_DIR = path.join(dirname, '/public')
+export const FRONTEND_BUILD_DIR = path.join(dirname, '../react-client', 'build')
+export const FRONTEND_INDEX = path.join(dirname, '../react-client', 'build', 'index.html')
+
+require('dotenv').config({ path: path.join(dirname, './.env') })
 
 export const IN_PROD = NODE_ENV === 'production'
