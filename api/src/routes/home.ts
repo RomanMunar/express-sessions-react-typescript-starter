@@ -15,8 +15,7 @@ router.get(
   '/home',
   auth,
   catchAsync(async (req, res) => {
-    //@ts-ignore
-    res.json({ ...req.user.user })
+    res.json({ ...req.user })
   })
 )
 

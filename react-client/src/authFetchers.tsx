@@ -27,7 +27,7 @@ export const register = async (body: RegisterFields) => {
       body: JSON.stringify(body),
       headers: { 'Content-type': 'application/json' },
     })
-    if (response.ok) return (await response.json()) as IUser
+    if (response.ok) return (await response.json()).user as IUser
 
     return 'Something went wrong'
   }
@@ -47,7 +47,7 @@ export const login = async (body: LoginFields) => {
       body: JSON.stringify(body),
       headers: { 'Content-type': 'application/json' },
     })
-    if (response.ok) return (await response.json()) as IUser
+    if (response.ok) return (await response.json()).user as IUser
 
     return 'Something went wrong'
   }
@@ -104,7 +104,7 @@ export const logout = async () => {
 export const getUser = async () => {
   const response = await fetch('/home')
   if (response.ok) {
-    return (await response.json()) as IUser
+    return (await response.json()).user as IUser
   }
 
   return 'Not logged in or session expired'

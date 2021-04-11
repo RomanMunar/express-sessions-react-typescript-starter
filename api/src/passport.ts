@@ -130,8 +130,7 @@ export const createPassport = (
       if (postRequest) {
         await postRequest(req)
       }
-      //@ts-ignore
-      res.json({ ...req.user.user })
+      res.json({ ...req.user })
       next()
     })
   )

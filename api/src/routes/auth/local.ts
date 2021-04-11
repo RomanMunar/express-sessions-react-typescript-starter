@@ -79,13 +79,10 @@ export const createLocalPassport = (app: Express) => {
   app.post(
     '/auth/signin',
     guest,
-    passport.authenticate('local', {
-      passReqToCallback: true,
-    }),
-    (req, res) => {
-      //@ts-ignore removes sessionCreatedAt
-      res.json({ ...req.user.user })
-    }
+    passport.authenticate('local'),
+    catchAsync(async (req, res) => {
+      res.json({ ...req.user })
+    })
   )
 
   app.get(
